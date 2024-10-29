@@ -1,0 +1,65 @@
+<p-panel header="Angular: De cero a Experto" class="p-1">
+  <h1>Custom Pipes</h1>
+
+  <p>Custom Pipes - hechos por {{'nosotros' | toggleCase:isUpperCase}}.</p>
+</p-panel>
+
+<p-toolbar>
+  <div class="p-toolbar-group-start">
+    <p-button
+    (click)="toggleUpperCase()"
+    label="ToggleCase"
+    icon="pi pi-search"
+    class="mr-2" />
+
+    <p-button
+    label="Por nombre"
+    icon="pi pi-id-card"
+    class="mr-2"
+    (onClick)="changueOrder('name')"/>
+
+    <p-button
+    label="Por Uso"
+    icon="pi pi-sort-up-fill"
+    class="mr-2"
+    (onClick)="changueOrder('Uso')"/>
+
+    <p-button
+    label="Por color"
+    icon="pi pi-palette"
+    (onClick)="changueOrder('color')"/>
+
+  </div>
+  <div class="p-toolbar-group-center">
+
+  </div>
+  <div class="p-toolbar-group-end">
+  </div>
+</p-toolbar>
+
+<p-panel header="Goats:">
+<div class="grid">
+  <div class="col mt-2">
+    <p-table [value]="heroes | sortBy:orderBy" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+
+          <th>Name:</th>
+          <th>Uso:</th>
+          <th>Category:</th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-heroe>
+        <tr>
+
+          <td>{{ heroe.name }}</td>
+          <td>{{ heroe.Uso | UsoPipe | titlecase}}</td>
+          <td>{{ heroe.color }}</td>
+
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+</p-panel>
